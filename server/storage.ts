@@ -30,10 +30,11 @@ export class MemStorage implements IStorage {
       message: insertRsvp.message || null,
     };
 
-    // Guardar en memoria
-    this.rsvps.set(id, rsvp);
-
     try {
+      // Guardar en memoria
+      this.rsvps.set(id, rsvp);
+      log(`RSVP guardado en memoria para ${insertRsvp.name}`);
+
       // Intentar guardar en Google Sheets
       await appendToSheet(insertRsvp);
       log(`RSVP guardado exitosamente para ${insertRsvp.name}`);

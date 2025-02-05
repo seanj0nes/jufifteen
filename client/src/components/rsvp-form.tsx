@@ -26,6 +26,8 @@ export function RsvpForm() {
       guests: "1",
       dietaryRestrictions: "",
       message: "",
+      name: "",
+      email: "",
     },
   });
 
@@ -35,10 +37,17 @@ export function RsvpForm() {
     },
     onSuccess: () => {
       toast({
-        title: "RSVP Submitted",
-        description: "Thank you for your response!",
+        title: "¡RSVP Enviado!",
+        description: "Gracias por confirmar tu asistencia.",
       });
       form.reset();
+    },
+    onError: (error) => {
+      toast({
+        title: "Error al enviar RSVP",
+        description: error instanceof Error ? error.message : "Por favor intenta nuevamente más tarde",
+        variant: "destructive",
+      });
     },
   });
 
@@ -52,7 +61,7 @@ export function RsvpForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nombre</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -80,7 +89,7 @@ export function RsvpForm() {
             name="attending"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Attending?</FormLabel>
+                <FormLabel>¿Asistirás?</FormLabel>
                 <FormControl>
                   <Switch
                     checked={field.value}
@@ -97,7 +106,7 @@ export function RsvpForm() {
             name="guests"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Number of Guests</FormLabel>
+                <FormLabel>Cantidad de invitados</FormLabel>
                 <FormControl>
                   <Input type="number" min="1" max="5" {...field} />
                 </FormControl>
@@ -109,11 +118,11 @@ export function RsvpForm() {
           <FormField
             control={form.control}
             name="dietaryRestrictions"
-            render={({ field }) => (
+            render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
-                <FormLabel>Dietary Restrictions</FormLabel>
+                <FormLabel>Restricciones dietarias</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input value={value || ""} onChange={onChange} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -123,11 +132,11 @@ export function RsvpForm() {
           <FormField
             control={form.control}
             name="message"
-            render={({ field }) => (
+            render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>Mensaje</FormLabel>
                 <FormControl>
-                  <Textarea {...field} />
+                  <Textarea value={value || ""} onChange={onChange} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -139,7 +148,7 @@ export function RsvpForm() {
             className="w-full"
             disabled={mutation.isPending}
           >
-            {mutation.isPending ? "Submitting..." : "Submit RSVP"}
+            {mutation.isPending ? "Enviando..." : "Enviar RSVP"}
           </Button>
         </form>
       </Form>
