@@ -1,4 +1,6 @@
 import { rsvps, type Rsvp, type InsertRsvp } from "@shared/schema";
+import { appendToSheet } from "./sheets";
+import { log } from "./vite";
 
 export interface IStorage {
   getRsvps(): Promise<Rsvp[]>;
@@ -24,8 +26,23 @@ export class MemStorage implements IStorage {
       ...insertRsvp,
       id,
       createdAt: new Date(),
+      dietaryRestrictions: insertRsvp.dietaryRestrictions || null,
+      message: insertRsvp.message || null,
     };
+
+    // Guardar en memoria
     this.rsvps.set(id, rsvp);
+
+    try {
+      // Intentar guardar en Google Sheets
+      await appendToSheet(insertRsvp);
+      log(`RSVP guardado exitosamente para ${insertRsvp.name}`);
+    } catch (error) {
+      // Loguear el error pero no interrumpir la operación
+      log(`Error al guardar en Google Sheets: ${error instanceof Error ? error.message : 'Error desconocido'}`);
+      // El RSVP ya está guardado en memoria, así que continuamos
+    }
+
     return rsvp;
   }
 }
