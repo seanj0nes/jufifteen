@@ -22,7 +22,7 @@ export function HeroSection() {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ 
-          opacity: [0, 0.8, 0],
+          opacity: [0, 0.4, 0],
           scaleX: [1, 1.2, 1],
         }}
         transition={{ 
@@ -30,7 +30,7 @@ export function HeroSection() {
           repeat: Infinity,
           repeatDelay: 3,
         }}
-        className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent"
       />
 
       {/* Camera flash effects */}
