@@ -10,7 +10,7 @@ export function HeroSection() {
           filter: 'brightness(0.4)'
         }}
       />
-      
+
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 1, 0], x: [0, 100, 200] }}
@@ -27,9 +27,9 @@ export function HeroSection() {
           className="text-6xl md:text-8xl font-light tracking-wider text-white mb-6"
           style={{ fontFamily: '"Playfair Display", serif' }}
         >
-          Sofia
+          Julieta
         </motion.h1>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
