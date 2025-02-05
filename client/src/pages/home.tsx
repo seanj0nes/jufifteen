@@ -17,7 +17,7 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <HeroSection />
       <div className="container mx-auto px-4 py-8 space-y-16">
-        <Countdown date="2024-07-15T18:00:00" />
+        <Countdown date="2025-04-26T21:30:00" />
         <RsvpForm />
         <LocationMap />
         <DressCode />

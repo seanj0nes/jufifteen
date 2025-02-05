@@ -45,7 +45,7 @@ export function HeroSection() {
           transition={{ delay: 1 }}
           className="mt-8 text-white/80"
         >
-          July 15, 2024 • 6:00 PM
+          26 de Abril, 2025 • 21:30 HS
         </motion.div>
       </div>
     </div>
