@@ -48,7 +48,7 @@ export function DressCode() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <CardTitle className="text-center text-white">Dress Code</CardTitle>
+          <CardTitle className="text-center text-white">Código de Vestimenta</CardTitle>
         </motion.div>
       </CardHeader>
       <CardContent>
@@ -72,7 +72,7 @@ export function DressCode() {
             >
               <motion.img 
                 src="https://images.unsplash.com/photo-1569388330292-79cc1ec67270"
-                alt="Formal Attire"
+                alt="Vestimenta Formal"
                 className="rounded-lg mb-4 w-full"
                 whileHover={{ 
                   filter: "brightness(1.2)",
@@ -80,8 +80,8 @@ export function DressCode() {
                 }}
               />
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">Formal Attire</h3>
-            <p className="text-white/80">Black tie optional. Evening gowns and suits preferred.</p>
+            <h3 className="text-primary font-semibold mb-2">Vestimenta de Gala</h3>
+            <p className="text-white/80">Se sugiere traje formal para caballeros y vestido de gala para damas.</p>
           </motion.div>
 
           <motion.div
@@ -97,7 +97,7 @@ export function DressCode() {
             >
               <motion.img 
                 src="https://images.unsplash.com/photo-1559563458-527698bf5295"
-                alt="Color Palette"
+                alt="Paleta de Colores"
                 className="rounded-lg mb-4 w-full"
                 whileHover={{ 
                   filter: "brightness(1.2)",
@@ -105,8 +105,8 @@ export function DressCode() {
                 }}
               />
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">Color Palette</h3>
-            <p className="text-white/80">Gold, Black, and Fuchsia tones encouraged.</p>
+            <h3 className="text-primary font-semibold mb-2">Paleta de Colores</h3>
+            <p className="text-white/80">Se sugieren tonos dorados, negros y fucsia para mantener la armonía del evento.</p>
           </motion.div>
 
           <motion.div
@@ -122,7 +122,7 @@ export function DressCode() {
             >
               <motion.img 
                 src="https://images.unsplash.com/3/www.madebyvadim.com.jpg"
-                alt="Accessories"
+                alt="Accesorios"
                 className="rounded-lg mb-4 w-full"
                 whileHover={{ 
                   filter: "brightness(1.2)",
@@ -130,8 +130,8 @@ export function DressCode() {
                 }}
               />
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">Accessories</h3>
-            <p className="text-white/80">Elegant jewelry and fashion accessories welcome.</p>
+            <h3 className="text-primary font-semibold mb-2">Accesorios</h3>
+            <p className="text-white/80">Se invita a complementar el atuendo con joyería y accesorios elegantes.</p>
           </motion.div>
         </motion.div>
       </CardContent>
