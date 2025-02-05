@@ -36,7 +36,7 @@ export function HeroSection() {
           transition={{ delay: 0.5 }}
           className="text-xl md:text-2xl text-gold-400 tracking-widest"
         >
-          QUINCEAÑERA
+          MIS 15
         </motion.div>
 
         <motion.div
