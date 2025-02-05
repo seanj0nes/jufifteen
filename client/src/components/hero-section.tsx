@@ -12,7 +12,7 @@ export function HeroSection() {
       <motion.div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1492571350019-22de08371fd3")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1621784563330-caee0b138a00")',
           filter: 'brightness(0.3)',
           scale,
         }}
