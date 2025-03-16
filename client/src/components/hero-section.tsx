@@ -67,7 +67,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="text-6xl md:text-8xl font-light tracking-wider text-white mb-6"
+          className="text-5xl sm:text-6xl md:text-8xl font-light tracking-wider text-white mb-4 md:mb-6 px-4"
           style={{ fontFamily: '"Playfair Display", serif' }}
         >
           Julieta
@@ -77,7 +77,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="text-xl md:text-2xl text-primary tracking-widest"
+          className="text-lg sm:text-xl md:text-2xl text-primary tracking-widest px-4"
         >
           MIS 15
         </motion.div>
@@ -86,7 +86,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="mt-8 text-white/80"
+          className="mt-6 md:mt-8 text-white/80 text-sm sm:text-base px-4"
         >
           26 de Abril, 2025 • 21:30 HS
         </motion.div>

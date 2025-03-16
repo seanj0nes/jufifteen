@@ -59,7 +59,7 @@ const form = useForm<InsertRsvp>({
   });
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto px-4 sm:px-6">
       <h2 className="text-3xl text-center text-white mb-8">RSVP</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-6">

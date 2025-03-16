@@ -12,6 +12,21 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  input, select, textarea {
+    @apply text-base sm:text-sm;
+  }
+
+  button {
+    @apply active:scale-95;
+  }
+}
+
     @apply font-semibold tracking-tighter;
   }
 
