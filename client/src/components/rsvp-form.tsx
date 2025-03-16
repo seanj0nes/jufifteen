@@ -112,20 +112,6 @@ const form = useForm<InsertRsvp>({
 
           <FormField
             control={form.control}
-            name="guests"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Cantidad de invitados</FormLabel>
-                <FormControl>
-                  <Input type="number" min="1" max="5" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="dietaryRestrictions"
             render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
@@ -171,7 +157,7 @@ const form = useForm<InsertRsvp>({
               name="dni"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>DNI</FormLabel>
+                  <FormLabel>Si venís en micro, necesito tu DNI</FormLabel>
                   <FormControl>
                     <Input 
                       placeholder="Ej: 12345678" 
