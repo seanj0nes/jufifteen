@@ -119,8 +119,8 @@ export function DressCode() {
               }}
             >
               <motion.img
-                src="https://images.unsplash.com/3/www.madebyvadim.com.jpg"
-                alt="Accesorios"
+                src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa"
+                alt="Playlist Colaborativa"
                 className="rounded-lg mb-4 w-full"
                 whileHover={{
                   filter: "brightness(1.2)",
@@ -128,10 +128,16 @@ export function DressCode() {
                 }}
               />
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">Accesorios</h3>
+            <h3 className="text-primary font-semibold mb-2">Playlist Colaborativa</h3>
             <p className="text-white/80">
-              Se invita a complementar el atuendo con joyería y accesorios
-              elegantes.
+              <a 
+                href="https://open.spotify.com/playlist/YOUR_PLAYLIST_ID" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                ¡Agrega tus canciones favoritas a la playlist de la fiesta!
+              </a>
             </p>
           </motion.div>
         </motion.div>
