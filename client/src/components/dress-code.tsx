@@ -119,28 +119,27 @@ export function DressCode() {
                 transition: { duration: 0.3 },
               }}
             >
-              <motion.img
-                src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa"
-                alt="Playlist Colaborativa"
-                className="rounded-lg mb-4 w-full"
-                whileHover={{
-                  filter: "brightness(1.2)",
-                  transition: { duration: 0.3 },
-                }}
-              />
+              <a
+                href="https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=_FcDv80xRbe6cUwrTKkicA&pt=d4d8b7d14295978949e67509c9945419&pi=8LVc4j7pSWGVv"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <motion.img
+                  src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa"
+                  alt="Playlist Colaborativa"
+                  className="rounded-lg mb-4 w-full"
+                  whileHover={{
+                    filter: "brightness(1.2)",
+                    transition: { duration: 0.3 },
+                  }}
+                />
+              </a>
             </motion.div>
             <h3 className="text-primary font-semibold mb-2">
               Playlist Colaborativa
             </h3>
             <p className="text-white/80">
-              <a
-                href="https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=_FcDv80xRbe6cUwrTKkicA&pt=d4d8b7d14295978949e67509c9945419&pi=8LVc4j7pSWGVv"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                ¡Agrega tus canciones favoritas a la playlist de la fiesta!
-              </a>
+              ¡Agrega tus canciones favoritas a la playlist de la fiesta!
             </p>
           </motion.div>
         </motion.div>
