@@ -10,6 +10,8 @@ export const rsvps = pgTable("rsvps", {
   guests: text("guests").notNull(),
   dietaryRestrictions: text("dietary_restrictions"),
   message: text("message"),
+  usesBus: boolean("uses_bus").default(false),
+  dni: text("dni"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 

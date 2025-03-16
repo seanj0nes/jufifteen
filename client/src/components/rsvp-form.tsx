@@ -33,6 +33,8 @@ const form = useForm<InsertRsvp>({
       message: "",
       name: "",
       email: "",
+      usesBus: false,
+      dni: "",
     },
   });
 
@@ -144,6 +146,47 @@ const form = useForm<InsertRsvp>({
               </FormItem>
             )}
           />
+
+          <FormField
+            control={form.control}
+            name="usesBus"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <div className="space-y-0.5">
+                  <FormLabel className="text-base">¿Venís en el micro?</FormLabel>
+                </div>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          {form.watch("usesBus") && (
+            <FormField
+              control={form.control}
+              name="dni"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>DNI</FormLabel>
+                  <FormControl>
+                    <Input 
+                      placeholder="Ej: 12345678" 
+                      {...field} 
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, '').slice(0, 8);
+                        field.onChange(value);
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
 
           <FormField
             control={form.control}
