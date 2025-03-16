@@ -19,12 +19,16 @@ import { Switch } from "@/components/ui/switch";
 
 export function RsvpForm() {
   const { toast } = useToast();
-  const form = useForm<InsertRsvp>({
-    resolver: zodResolver(insertRsvpSchema),
+  const phoneRegex = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/;
+
+const form = useForm<InsertRsvp>({
+    resolver: zodResolver(insertRsvpSchema.extend({
+      email: z.string().regex(phoneRegex, 'Ingresa un número de celular válido de Argentina')
+    })),
     defaultValues: {
       attending: true,
       guests: "1",
-      dietaryRestrictions: "",
+      dietaryRestrictions: "Lo que venga",
       message: "",
       name: "",
       email: "",
@@ -61,9 +65,9 @@ export function RsvpForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nombre</FormLabel>
+                <FormLabel>Tu nombre</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input placeholder="Ingresá tu nombre completo" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,9 +79,9 @@ export function RsvpForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Tu celular</FormLabel>
                 <FormControl>
-                  <Input type="email" {...field} />
+                  <Input type="tel" placeholder="Ej: 11XXXXXXXX" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -88,8 +92,10 @@ export function RsvpForm() {
             control={form.control}
             name="attending"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>¿Asistirás?</FormLabel>
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <div className="space-y-0.5">
+                  <FormLabel className="text-base">¿Asistirás?</FormLabel>
+                </div>
                 <FormControl>
                   <Switch
                     checked={field.value}
@@ -120,9 +126,18 @@ export function RsvpForm() {
             name="dietaryRestrictions"
             render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
-                <FormLabel>Restricciones dietarias</FormLabel>
+                <FormLabel>Avisanos qué preferís comer</FormLabel>
                 <FormControl>
-                  <Input value={value || ""} onChange={onChange} {...field} />
+                  <select 
+                    className="w-full rounded-md border border-input bg-background px-3 py-2"
+                    value={value || ""} 
+                    onChange={onChange} 
+                    {...field}
+                  >
+                    <option value="Lo que venga">Lo que venga</option>
+                    <option value="Soy Veggie">Soy Veggie</option>
+                    <option value="Cuidado con el pan que soy Celiaco">Cuidado con el pan que soy Celiaco</option>
+                  </select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
