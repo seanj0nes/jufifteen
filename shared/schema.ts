@@ -6,8 +6,8 @@ export const rsvps = pgTable("rsvps", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
-  attending: boolean("attending").notNull(),
   guests: text("guests").notNull(),
+  attending: boolean("attending").notNull(),
   dietaryRestrictions: text("dietary_restrictions"),
   message: text("message"),
   usesBus: boolean("uses_bus").default(false),
@@ -18,10 +18,12 @@ export const rsvps = pgTable("rsvps", {
 export const insertRsvpSchema = createInsertSchema(rsvps).pick({
   name: true,
   email: true,
-  attending: true,
   guests: true,
+  attending: true,
   dietaryRestrictions: true,
   message: true,
+  usesBus:true,
+  dni: true
 });
 
 export type InsertRsvp = z.infer<typeof insertRsvpSchema>;
