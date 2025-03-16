@@ -83,7 +83,8 @@ export function DressCode() {
               Vestimenta de Gala
             </h3>
             <p className="text-white/80">
-              Cae de traje o vestido bien L-gante y llamativo.</p>
+              Cae de traje o vestido bien L-gante y llamativo.
+            </p>
           </motion.div>
 
           <motion.div variants={itemAnimation} className="text-center">
@@ -128,11 +129,13 @@ export function DressCode() {
                 }}
               />
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">Playlist Colaborativa</h3>
+            <h3 className="text-primary font-semibold mb-2">
+              Playlist Colaborativa
+            </h3>
             <p className="text-white/80">
-              <a 
-                href="https://open.spotify.com/playlist/YOUR_PLAYLIST_ID" 
-                target="_blank" 
+              <a
+                href="https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=_FcDv80xRbe6cUwrTKkicA&pt=d4d8b7d14295978949e67509c9945419&pi=8LVc4j7pSWGVv"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
