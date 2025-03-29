@@ -148,7 +148,7 @@ export function HeroSection() {
             className="font-['Cormorant_Garamond'] text-3xl md:text-4xl font-light text-white mb-6"
             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}
           >
-            Mis 15 Años
+            26/4/2025
           </motion.h2>
           
           <motion.p
@@ -158,7 +158,7 @@ export function HeroSection() {
             className="font-['Cormorant_Garamond'] text-2xl md:text-3xl text-[#b98f71] max-w-lg mx-auto"
             style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
           >
-            26/4/2025 • VONHARV
+            21:30hs
           </motion.p>
         </motion.div>
         
