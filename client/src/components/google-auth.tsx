@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { setAccessToken } from '@/lib/sheets-api';
 
@@ -7,9 +7,18 @@ interface GoogleAuthProps {
   onAuthFailure?: (error: Error) => void;
 }
 
+// Interfaz para la API de Google
+declare global {
+  interface Window {
+    gapi: any;
+    google: any;
+    googleAuthInitialized: boolean;
+  }
+}
+
 export function GoogleAuth({ onAuthSuccess, onAuthFailure }: GoogleAuthProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isInitializing, setIsInitializing] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -17,114 +26,168 @@ export function GoogleAuth({ onAuthSuccess, onAuthFailure }: GoogleAuthProps) {
   const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
 
   useEffect(() => {
-    // Cargamos el script de Google API dinámicamente
-    const script = document.createElement('script');
-    script.src = 'https://apis.google.com/js/api.js';
-    script.async = true;
-    script.defer = true;
-    script.onload = initializeGAPI;
-    document.head.appendChild(script);
+    // Método moderno: Cargar gapi.client.js usando window.google
+    const loadGapiAndInitialize = () => {
+      // Cargamos la librería principal de Google
+      const scriptGSI = document.createElement('script');
+      scriptGSI.src = 'https://accounts.google.com/gsi/client';
+      scriptGSI.async = true;
+      scriptGSI.defer = true;
+      scriptGSI.onload = () => {
+        // Ahora cargamos la biblioteca gapi
+        const scriptGAPI = document.createElement('script');
+        scriptGAPI.src = 'https://apis.google.com/js/api.js';
+        scriptGAPI.async = true;
+        scriptGAPI.defer = true;
+        scriptGAPI.onload = initializeGoogle;
+        document.head.appendChild(scriptGAPI);
+      };
+      document.head.appendChild(scriptGSI);
+    };
+
+    loadGapiAndInitialize();
 
     return () => {
-      document.head.removeChild(script);
+      // La limpieza de scripts es complicada, se maneja el ciclo de vida a través
+      // de variables globales para evitar múltiples inicializaciones
     };
   }, []);
 
-  const initializeGAPI = () => {
-    // @ts-ignore - gapi está disponible globalmente después de cargar el script
-    window.gapi.load('client:auth2', () => {
-      // @ts-ignore
-      window.gapi.client.init({
-        apiKey: API_KEY,
-        clientId: CLIENT_ID,
-        scope: SCOPES,
-        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-      }).then(() => {
-        // @ts-ignore
-        const authInstance = window.gapi.auth2.getAuthInstance();
-        
-        // Verificamos si el usuario ya está autenticado
-        if (authInstance.isSignedIn.get()) {
-          handleAuthSuccess(authInstance.currentUser.get());
-        }
-        
-        setIsInitializing(false);
-      }).catch((error: any) => {
-        console.error('Error al inicializar GAPI:', error);
-        let errorMessage = 'Error al inicializar la API de Google';
-        
-        // Verificamos si hay un mensaje de error específico sobre referrer bloqueado
-        if (error?.error?.message && error.error.message.includes('Requests from referer')) {
-          errorMessage = 'La API de Google está bloqueando solicitudes desde esta URL. El administrador debe configurar los dominios permitidos en Google Cloud Console.';
-        }
-        
-        // Verificamos si hay un mensaje de error específico sobre origen no válido
-        if (error?.error === 'idpiframe_initialization_failed' && error?.details?.includes('Not a valid origin for the client')) {
-          errorMessage = 'El dominio de Replit no está registrado en la configuración de OAuth de Google. Por favor, agrega este dominio en la consola de Google Cloud.';
-        }
-        
-        setError(errorMessage);
-        setIsInitializing(false);
-        if (onAuthFailure) onAuthFailure(new Error(errorMessage));
-      });
+  const initializeGoogle = () => {
+    if (window.googleAuthInitialized) {
+      checkAuthStatus();
+      return;
+    }
+
+    window.gapi.load('client', async () => {
+      try {
+        await window.gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+        });
+
+        window.googleAuthInitialized = true;
+        checkAuthStatus();
+      } catch (error: any) {
+        console.error('Error al inicializar GAPI client:', error);
+        handleAuthError(error);
+      }
     });
   };
 
-  const handleAuthSuccess = (googleUser: any) => {
-    const token = googleUser.getAuthResponse().access_token;
-    setAccessToken(token);
-    setIsAuthenticated(true);
-    setError(null);
-    if (onAuthSuccess) onAuthSuccess();
+  const checkAuthStatus = () => {
+    try {
+      // Comprobamos si hay un token en localStorage
+      const token = localStorage.getItem('googleAuthToken');
+      const tokenExpiry = localStorage.getItem('googleAuthTokenExpiry');
+      
+      if (token && tokenExpiry && Number(tokenExpiry) > Date.now()) {
+        // Token válido, lo usamos
+        setAccessToken(token);
+        setIsAuthenticated(true);
+      }
+      
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error al verificar estado de autenticación:', error);
+      setIsLoading(false);
+    }
   };
 
-  const handleAuthClick = () => {
-    if (isInitializing) return;
-    
+  const handleAuthClick = async () => {
     try {
-      // @ts-ignore
-      const authInstance = window.gapi.auth2.getAuthInstance();
-      
-      if (!authInstance.isSignedIn.get()) {
-        authInstance.signIn().then(handleAuthSuccess).catch((error: Error) => {
-          console.error('Error de autenticación:', error);
-          setError('Error al autenticar con Google');
-          if (onAuthFailure) onAuthFailure(error);
-        });
-      }
+      setIsLoading(true);
+      setError(null);
+
+      const tokenClient = window.google.accounts.oauth2.initTokenClient({
+        client_id: CLIENT_ID,
+        scope: SCOPES,
+        callback: (tokenResponse: any) => {
+          if (tokenResponse && tokenResponse.access_token) {
+            // Éxito en la autenticación
+            const token = tokenResponse.access_token;
+            const expiresIn = tokenResponse.expires_in || 3600; // Default a 1 hora
+            
+            // Calculamos el tiempo de expiración
+            const expiryTime = Date.now() + (expiresIn * 1000);
+            
+            // Guardamos el token y su tiempo de expiración
+            localStorage.setItem('googleAuthToken', token);
+            localStorage.setItem('googleAuthTokenExpiry', expiryTime.toString());
+            
+            setAccessToken(token);
+            setIsAuthenticated(true);
+            setError(null);
+            setIsLoading(false);
+            
+            if (onAuthSuccess) onAuthSuccess();
+          } else {
+            // No hay token
+            setIsLoading(false);
+            handleAuthError(new Error('No se recibió un token válido'));
+          }
+        },
+        error_callback: (err: any) => {
+          setIsLoading(false);
+          handleAuthError(err);
+        }
+      });
+
+      tokenClient.requestAccessToken();
     } catch (error: any) {
-      console.error('Error al autenticar:', error);
-      setError(`Error: ${error.message}`);
-      if (onAuthFailure && error instanceof Error) onAuthFailure(error);
+      setIsLoading(false);
+      handleAuthError(error);
     }
+  };
+
+  const handleAuthError = (error: any) => {
+    console.error('Error de autenticación con Google:', error);
+    
+    let message = 'Error durante la autenticación con Google';
+    
+    if (error?.message) {
+      if (error.message.includes('Not a valid origin')) {
+        message = 'El dominio actual no está autorizado en la consola de Google Cloud. Configura los orígenes JavaScript autorizados.';
+      } else if (error.message.includes('popup_closed_by_user')) {
+        message = 'Ventana cerrada. Por favor, intenta nuevamente.';
+      } else {
+        message = error.message;
+      }
+    }
+    
+    setError(message);
+    if (onAuthFailure) onAuthFailure(new Error(message));
   };
 
   const handleSignOut = () => {
     try {
-      // @ts-ignore
-      const authInstance = window.gapi.auth2.getAuthInstance();
-      authInstance.signOut().then(() => {
-        setIsAuthenticated(false);
-        setError(null);
-      });
+      // Eliminamos los datos de autenticación
+      localStorage.removeItem('googleAuthToken');
+      localStorage.removeItem('googleAuthTokenExpiry');
+      
+      setIsAuthenticated(false);
+      setError(null);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   };
 
-  if (isInitializing) {
-    return <div>Cargando autenticación de Google...</div>;
+  if (isLoading) {
+    return <div className="flex justify-center py-2">
+      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+    </div>;
   }
 
   return (
     <div className="flex flex-col items-center gap-2">
-      {error && <div className="text-red-500 mb-2">{error}</div>}
+      {error && <div className="text-red-500 mb-2 text-sm text-center">{error}</div>}
       
       {!isAuthenticated ? (
         <Button 
           onClick={handleAuthClick} 
           variant="outline"
           className="flex items-center gap-2"
+          disabled={isLoading}
         >
           <svg width="20" height="20" viewBox="0 0 24 24">
             <path
