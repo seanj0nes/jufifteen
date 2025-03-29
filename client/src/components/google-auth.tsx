@@ -49,11 +49,23 @@ export function GoogleAuth({ onAuthSuccess, onAuthFailure }: GoogleAuthProps) {
         }
         
         setIsInitializing(false);
-      }).catch((error: Error) => {
+      }).catch((error: any) => {
         console.error('Error al inicializar GAPI:', error);
-        setError('Error al inicializar la API de Google');
+        let errorMessage = 'Error al inicializar la API de Google';
+        
+        // Verificamos si hay un mensaje de error específico sobre referrer bloqueado
+        if (error?.error?.message && error.error.message.includes('Requests from referer')) {
+          errorMessage = 'La API de Google está bloqueando solicitudes desde esta URL. El administrador debe configurar los dominios permitidos en Google Cloud Console.';
+        }
+        
+        // Verificamos si hay un mensaje de error específico sobre origen no válido
+        if (error?.error === 'idpiframe_initialization_failed' && error?.details?.includes('Not a valid origin for the client')) {
+          errorMessage = 'El dominio de Replit no está registrado en la configuración de OAuth de Google. Por favor, agrega este dominio en la consola de Google Cloud.';
+        }
+        
+        setError(errorMessage);
         setIsInitializing(false);
-        if (onAuthFailure) onAuthFailure(error);
+        if (onAuthFailure) onAuthFailure(new Error(errorMessage));
       });
     });
   };
