@@ -53,8 +53,7 @@ export function RsvpForm() {
     try {
       // Al enviar el primer formulario a formsubmit.co, te llegará un email de confirmación
       // que necesitarás activar para empezar a recibir formularios en tu email.
-      // Reemplaza 'email@ejemplo.com' con tu correo electrónico real
-      const response = await fetch('https://formsubmit.co/jscrivin@gmail.com', {
+      const response = await fetch('https://formsubmit.co/amconsultingar@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
