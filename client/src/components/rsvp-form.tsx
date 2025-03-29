@@ -3,10 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { insertRsvpSchema, type InsertRsvp } from "@shared/schema";
 import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
-import { appendToSheetWithOAuth } from "@/lib/sheets-api";
-import { GoogleAuth } from "@/components/google-auth";
 import {
   Form,
   FormControl,
