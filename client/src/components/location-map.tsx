@@ -23,7 +23,7 @@ export function LocationMap() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <CardTitle className="text-center text-[#ffd8aa] text-2xl md:text-3xl" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-            Te espero aquí
+            Te espero acá
           </CardTitle>
         </motion.div>
       </CardHeader>
@@ -44,26 +44,6 @@ export function LocationMap() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-          
-          {/* Large Location Indicator */}
-          <motion.div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ 
-              duration: 0.8, 
-              delay: 0.5,
-              type: "spring",
-              stiffness: 200
-            }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <div className="relative">
-              <div className="w-12 h-12 bg-[#ffd8aa] rounded-full opacity-20 animate-ping absolute"></div>
-              <div className="w-16 h-16 bg-[#ffd8aa] rounded-full opacity-20 animate-pulse absolute -top-2 -left-2"></div>
-              <MapPin className="w-8 h-8 text-[#ffd8aa] relative z-10 drop-shadow-lg" />
-            </div>
-          </motion.div>
         </motion.div>
         
         <motion.div 

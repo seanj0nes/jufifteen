@@ -31,7 +31,7 @@ const iconAnimation = {
 const confettiAnimation = {
   initial: { opacity: 0, y: 10 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, staggerChildren: 0.1 }
+  transition: { duration: 0.5, staggerChildren: 0.1 },
 };
 
 // Componente de confeti decorativo
@@ -41,30 +41,29 @@ const Confetti = () => {
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
-          initial={{ 
+          initial={{
             opacity: 0,
-            x: Math.random() * 100 - 50, 
+            x: Math.random() * 100 - 50,
             y: -20,
-            rotate: Math.random() * 360
+            rotate: Math.random() * 360,
           }}
-          animate={{ 
+          animate={{
             opacity: [0, 1, 0],
             x: Math.random() * 200 - 100,
             y: Math.random() * 200,
-            rotate: Math.random() * 360
+            rotate: Math.random() * 360,
           }}
-          transition={{ 
+          transition={{
             duration: 2 + Math.random() * 3,
             repeat: Infinity,
-            delay: Math.random() * 5
+            delay: Math.random() * 5,
           }}
           className="absolute w-2 h-2 rounded-full"
           style={{
-            backgroundColor: 
-              i % 3 === 0 ? '#ffd8aa' : 
-              i % 3 === 1 ? '#ff61ab' : '#000000',
+            backgroundColor:
+              i % 3 === 0 ? "#ffd8aa" : i % 3 === 1 ? "#ff61ab" : "#000000",
             left: `${Math.random() * 100}%`,
-            top: '-5%'
+            top: "-5%",
           }}
         />
       ))}
@@ -76,7 +75,7 @@ export function GiftRegistry() {
   return (
     <div className="relative py-10">
       <Confetti />
-      
+
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -84,11 +83,13 @@ export function GiftRegistry() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto mb-8"
       >
-        <h2 className="text-3xl md:text-4xl text-center font-light text-[#ffd8aa] flex items-center justify-center gap-3" 
-          style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-          <motion.div 
-            initial="rest" 
-            whileHover="hover" 
+        <h2
+          className="text-3xl md:text-4xl text-center font-light text-[#ffd8aa] flex items-center justify-center gap-3"
+          style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+        >
+          <motion.div
+            initial="rest"
+            whileHover="hover"
             animate="rest"
             className="inline-flex"
           >
@@ -97,9 +98,9 @@ export function GiftRegistry() {
             </motion.div>
           </motion.div>
           Regalitos
-          <motion.div 
-            initial="rest" 
-            whileHover="hover" 
+          <motion.div
+            initial="rest"
+            whileHover="hover"
             animate="rest"
             className="inline-flex"
           >
@@ -108,7 +109,7 @@ export function GiftRegistry() {
             </motion.div>
           </motion.div>
         </h2>
-        
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -117,7 +118,7 @@ export function GiftRegistry() {
           className="text-white/90 mb-8 text-center max-w-2xl mx-auto text-lg"
         >
           Tu presencia en mi fiesta es el mejor regalo. Sin embargo, si queres
-          hacerme un presente, te dejo unas sugerencias:
+          hacerme un presente, te dejo estas sugerencias:
         </motion.p>
       </motion.div>
 
@@ -136,23 +137,29 @@ export function GiftRegistry() {
             <CardContent className="p-6 flex flex-col h-full">
               <div className="mb-4 text-center">
                 <CreditCard className="w-10 h-10 text-[#ffd8aa] mx-auto mb-3" />
-                <h3 className="text-xl font-medium text-[#ffd8aa] mb-3" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                <h3
+                  className="text-xl font-medium text-[#ffd8aa] mb-3"
+                  style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                >
                   Aporte para mi viaje
                 </h3>
                 <p className="text-white/80 mb-6">
-                  Si queres ayudarme con mi sueño de viajar, acá tenes los datos para transferir:
+                  Si no sabes que regalarme, acá tenes mis datos para
+                  transferirme:
                 </p>
-                
+
                 <div className="bg-black/30 p-4 rounded-lg text-left mb-6">
                   <p className="mb-2 text-white/90">
-                    <strong className="text-[#ffd8aa]">Alias CVU:</strong> <span className="font-mono">regalo.cumple.mp</span>
+                    <strong className="text-[#ffd8aa]">Alias CVU:</strong>{" "}
+                    <span className="font-mono">regalo.cumple.mp</span>
                   </p>
                   <p className="text-white/90">
-                    <strong className="text-[#ffd8aa]">Nombre:</strong><span className="font-mono"> Julieta Molina</span>
+                    <strong className="text-[#ffd8aa]">Nombre:</strong>
+                    <span className="font-mono"> Julieta Molina</span>
                   </p>
                 </div>
               </div>
-              
+
               <div className="mt-auto">
                 <motion.div
                   initial="rest"
@@ -197,25 +204,30 @@ export function GiftRegistry() {
             <CardContent className="p-6 flex flex-col h-full">
               <div className="mb-4 text-center">
                 <Diamond className="w-10 h-10 text-[#ffd8aa] mx-auto mb-3" />
-                <h3 className="text-xl font-medium text-[#ffd8aa] mb-3" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                <h3
+                  className="text-xl font-medium text-[#ffd8aa] mb-3"
+                  style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                >
                   Un recuerdo especial
                 </h3>
                 <p className="text-white/80 mb-4">
-                  Si prefieres regalarme algo especial, me encantaría un Charm de Pandora para mi colección
+                  Si preferís regalarme algo especial, me encantaría un Charm de
+                  Pandora para mi colección
                 </p>
-                
+
                 <div className="bg-black/30 p-4 rounded-lg text-left mb-6">
                   <p className="text-white/90">
-                    Soy fan de los charms, especialmente los que tienen diseños relacionados con la moda y viajes.
+                    Soy fan de los charms, especialmente los que tienen diseños
+                    con onda.
                   </p>
                 </div>
               </div>
-              
+
               <div className="mt-auto">
                 <motion.div initial="rest" whileHover="hover" animate="rest">
                   <motion.div variants={buttonAnimation}>
                     <Button
-                      variant="outline" 
+                      variant="outline"
                       className="w-full relative overflow-hidden group border-[#ffd8aa] bg-black/50 hover:bg-black/70 text-[#ffd8aa]"
                       onClick={() =>
                         window.open(
@@ -232,7 +244,7 @@ export function GiftRegistry() {
                       />
                       <span className="relative flex items-center gap-2">
                         <Diamond className="w-4 h-4" />
-                        Ver Charms de Pandora
+                        Mira los Charms de Pandora
                       </span>
                     </Button>
                   </motion.div>
