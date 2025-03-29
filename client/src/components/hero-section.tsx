@@ -36,7 +36,7 @@ export function HeroSection() {
   
   // Creamos el enlace de Google Calendar
   const eventDate = new Date('2025-04-26T21:30:00');
-  const eventEndDate = new Date(eventDate.getTime() + (5 * 60 * 60 * 1000)); // Asumimos 5 horas de duración
+  const eventEndDate = new Date(eventDate.getTime() + (7.5 * 60 * 60 * 1000)); // Asumimos 7.5 horas de duración
   
   const googleCalendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Fiesta%20de%2015%20de%20Julieta&dates=${eventDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}/${eventEndDate.toISOString().replace(/-|:|\.\d\d\d/g, '')}&details=¡Te%20espero%20en%20mis%2015!%20-%20Julieta&location=Salón%20Vonharv,%20Av.%2019%20entre%20511%20y%20514,%20B1900%20Gonnet,%20Provincia%20de%20Buenos%20Aires&sf=true`;
 
@@ -89,7 +89,7 @@ export function HeroSection() {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={`star-${i}`}
-            className="absolute text-[#ffd8aa]"
+            className="absolute text-[#b98f71]"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ 
               opacity: [0, 0.7, 0],
@@ -107,7 +107,7 @@ export function HeroSection() {
               top: `${Math.random() * 100}%`,
             }}
           >
-            <Star className="w-3 h-3 fill-[#ffd8aa]" />
+            <Star className="w-3 h-3 fill-[#b98f71]" />
           </motion.div>
         ))}
       </div>
@@ -125,27 +125,27 @@ export function HeroSection() {
           className="w-full px-6"
         >
           <motion.h1 
-            className="text-6xl md:text-7xl lg:text-8xl font-light text-[#ffd8aa] mb-4"
+            className="font-['JuliScript'] text-6xl md:text-7xl lg:text-8xl font-normal text-[#b98f71] mb-2"
             style={{ 
               textShadow: '0 4px 8px rgba(0,0,0,0.8)',
               letterSpacing: '0.05em'
             }}
           >
-            Julieta
+            JU XV
           </motion.h1>
           
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "80%" }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="h-0.5 bg-gradient-to-r from-transparent via-[#ffd8aa] to-transparent mx-auto my-4"
+            className="h-0.5 bg-gradient-to-r from-transparent via-[#b98f71] to-transparent mx-auto my-4"
           />
           
           <motion.h2 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.3 }}
-            className="text-2xl md:text-3xl font-light text-white mb-6"
+            className="font-['Cormorant_Garamond'] text-3xl md:text-4xl font-light text-white mb-6"
             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}
           >
             Mis 15 Años
@@ -155,10 +155,10 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.7 }}
-            className="text-lg md:text-xl text-white/80 max-w-lg mx-auto"
+            className="font-['Cormorant_Garamond'] text-2xl md:text-3xl text-[#b98f71] max-w-lg mx-auto"
             style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
           >
-            26 de Abril, 2025 • 21:30hs
+            26/4/2025 • VONHARV
           </motion.p>
         </motion.div>
         
@@ -173,14 +173,14 @@ export function HeroSection() {
             href={googleCalendarLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white hover:text-[#ffd8aa] transition-all duration-300"
+            className="flex items-center gap-2 text-[#b98f71] hover:text-white transition-all duration-300 group"
             style={{
-              letterSpacing: '0.05em',
+              letterSpacing: '0.1em',
               textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
-            <Calendar className="w-5 h-5 drop-shadow-lg" />
-            <span className="font-semibold">Agendar</span>
+            <Calendar className="w-5 h-5 drop-shadow-lg group-hover:scale-110 transition-all" />
+            <span className="font-['Cormorant_Garamond'] uppercase text-lg tracking-wider">Agendala</span>
           </a>
         </motion.div>
       </motion.div>

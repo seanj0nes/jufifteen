@@ -31,11 +31,11 @@ export function setupBackgroundAudio() {
     // Crear botón de reproducción
     const playButton = document.createElement("button");
     playButton.innerHTML = "♪";
-    playButton.className = "bg-black/80 hover:bg-black/90 text-[#ffd8aa] border border-[#ffd8aa]/30 rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 text-xl font-medium";
+    playButton.className = "bg-black/80 hover:bg-black/90 text-[#b98f71] border border-[#b98f71]/30 rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 text-xl font-medium";
     
     // Etiqueta para mostrar la pista actual
     const trackLabel = document.createElement("div");
-    trackLabel.className = "bg-black/70 text-[#ffd8aa] px-4 py-2 rounded-full text-sm opacity-0 transition-opacity duration-300 border border-[#ffd8aa]/20 text-shadow shadow-black";
+    trackLabel.className = "bg-black/70 text-[#b98f71] px-4 py-2 rounded-full text-sm opacity-0 transition-opacity duration-300 border border-[#b98f71]/20 text-shadow shadow-black";
     trackLabel.textContent = trackTitle;
     
     // Tooltip

@@ -117,7 +117,7 @@ export function GiftRegistry() {
           className="text-white/90 mb-8 text-center max-w-2xl mx-auto text-lg"
         >
           Tu presencia en mi fiesta es el mejor regalo. Sin embargo, si queres
-          hacerme un presente, aquí algunas sugerencias:
+          hacerme un presente, te dejo unas sugerencias:
         </motion.p>
       </motion.div>
 
@@ -140,7 +140,7 @@ export function GiftRegistry() {
                   Aporte para mi viaje
                 </h3>
                 <p className="text-white/80 mb-6">
-                  Si quieres ayudarme con mi sueño de viajar, aquí tienes los datos para transferir:
+                  Si queres ayudarme con mi sueño de viajar, acá tenes los datos para transferir:
                 </p>
                 
                 <div className="bg-black/30 p-4 rounded-lg text-left mb-6">
@@ -148,7 +148,7 @@ export function GiftRegistry() {
                     <strong className="text-[#ffd8aa]">Alias CVU:</strong> <span className="font-mono">regalo.cumple.mp</span>
                   </p>
                   <p className="text-white/90">
-                    <strong className="text-[#ffd8aa]">A nombre de:</strong> Julieta González
+                    <strong className="text-[#ffd8aa]">Nombre:</strong><span className="font-mono"> Julieta Molina</span>
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export function GiftRegistry() {
                       />
                       <span className="relative flex items-center gap-2">
                         <CreditCard className="w-4 h-4" />
-                        Abrir Mercado Pago
+                        Abrí Mercado Pago
                       </span>
                     </Button>
                   </motion.div>
@@ -206,7 +206,7 @@ export function GiftRegistry() {
                 
                 <div className="bg-black/30 p-4 rounded-lg text-left mb-6">
                   <p className="text-white/90">
-                    Soy fan de los charms con detalles en oro rosa, especialmente los que tienen diseños relacionados con la moda y viajes.
+                    Soy fan de los charms, especialmente los que tienen diseños relacionados con la moda y viajes.
                   </p>
                 </div>
               </div>

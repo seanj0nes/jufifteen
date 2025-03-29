@@ -62,7 +62,7 @@ export function Countdown({ date }: { date: string }) {
         className="text-center text-2xl md:text-3xl font-light text-[#ffd8aa] mb-8"
         style={{ textShadow: "0 2px 4px rgba(0,0,0,0.6)" }}
       >
-        Cuenta regresiva para el gran día
+        Cuenta regresiva
       </motion.h3>
       
       <motion.div
@@ -86,7 +86,7 @@ export function Countdown({ date }: { date: string }) {
               <CardContent className="p-6 text-center relative">
                 {/* Círculo decorativo de fondo */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full bg-[#ffd8aa]/5 absolute"></div>
+                  <div className="w-full h-full  bg-[#ffd8aa]/5 absolute"></div>
                 </div>
                 
                 {/* Flash de cámara en hover */}
@@ -95,7 +95,7 @@ export function Countdown({ date }: { date: string }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: [0, 0.2, 0] }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 bg-white rounded-full"
+                    className="absolute inset-0 bg-white"
                   />
                 )}
                 

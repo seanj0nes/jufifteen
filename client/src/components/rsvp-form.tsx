@@ -132,7 +132,7 @@ export function RsvpForm() {
                 name="dietaryRestrictions"
                 render={({ field: { value, onChange, ...field } }) => (
                   <FormItem>
-                    <FormLabel>Avisanos qué preferís comer</FormLabel>
+                    <FormLabel>Contame qué preferís comer</FormLabel>
                     <FormControl>
                       <select
                         className="w-full rounded-md border border-input bg-background px-3 py-2"
