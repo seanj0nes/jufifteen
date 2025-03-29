@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Scissors, Music, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const containerAnimation = {
@@ -38,20 +39,44 @@ const imageAnimation = {
   },
 };
 
+// Datos para la sección de código de vestimenta
+const dressCodeItems = [
+  {
+    icon: <Scissors className="w-10 h-10 text-[#ffd8aa] mb-3" />,
+    title: "Dress Code: Elegante",
+    description: "Traje, vestido o conjunto que te haga brillar. ¡Es noche de pasarela!",
+    image: "/images/dress-code/formal.jpg"
+  },
+  {
+    icon: <Sparkles className="w-10 h-10 text-[#ffd8aa] mb-3" />,
+    title: "Colores Sugeridos",
+    description: "Negro, dorado, fucsia y tonos metálicos para complementar la temática del desfile.",
+    image: "/images/dress-code/colors.jpg"
+  },
+  {
+    icon: <Music className="w-10 h-10 text-[#ffd8aa] mb-3" />,
+    title: "Playlist Colaborativa",
+    description: "¡Sumá tus canciones favoritas a mi playlist para que suenen en la fiesta!",
+    image: "/images/dress-code/playlist.jpg",
+    link: "https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=_FcDv80xRbe6cUwrTKkicA"
+  }
+];
+
 export function DressCode() {
   return (
-    <Card className="bg-black/50 border-primary/20">
-      <CardHeader>
+    <div className="py-8">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <CardTitle className="text-center text-white">Código de Vestimenta</CardTitle>
+          <h2 className="text-3xl md:text-4xl text-center font-light text-[#ffd8aa] mb-12" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            Código de Vestimenta
+          </h2>
         </motion.div>
-      </CardHeader>
-      <CardContent>
+        
         <motion.div
           variants={containerAnimation}
           initial="hidden"
@@ -59,92 +84,69 @@ export function DressCode() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          <motion.div variants={itemAnimation} className="text-center">
-            <motion.div
-              variants={imageAnimation}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+          {dressCodeItems.map((item, index) => (
+            <motion.div 
+              key={index} 
+              variants={itemAnimation} 
+              className="text-center"
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
             >
-              <motion.img
-                src="https://images.unsplash.com/photo-1569388330292-79cc1ec67270"
-                alt="Vestimenta Formal"
-                className="rounded-lg mb-4 w-full h-48 object-cover"
-                whileHover={{
-                  filter: "brightness(1.2)",
-                  transition: { duration: 0.3 },
-                }}
-              />
+              <Card className="h-full bg-gradient-to-br from-black/70 to-black/40 border border-[#ffd8aa]/30 overflow-hidden shadow-xl">
+                <CardContent className="p-6 flex flex-col items-center h-full">
+                  <motion.div
+                    variants={imageAnimation}
+                    className="relative w-full h-48 mb-6 overflow-hidden rounded-lg"
+                  >
+                    {item.link ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full relative"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+                        <div className="absolute bottom-3 left-0 right-0 text-center text-white text-sm z-20">
+                          Clic para abrir playlist
+                        </div>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110"
+                        />
+                      </a>
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </>
+                    )}
+                  </motion.div>
+                  
+                  <div className="flex-grow">
+                    {item.icon}
+                    <h3 className="text-[#ffd8aa] font-semibold text-xl mb-3" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                      {item.title}
+                    </h3>
+                    <p className="text-white/80">
+                      {item.description}
+                    </p>
+                  </div>
+                  
+                  {/* Flash de cámara efecto */}
+                  <motion.div 
+                    className="absolute inset-0 bg-white/5 opacity-0"
+                    whileHover={{ opacity: 1, transition: { duration: 0.2 } }}
+                  />
+                </CardContent>
+              </Card>
             </motion.div>
-            <h3 className="text-primary font-semibold mb-2">
-              Vestimenta de Gala
-            </h3>
-            <p className="text-white/80">
-              Caé de traje o vestido bien elegante y llamativo.
-            </p>
-          </motion.div>
-
-          <motion.div variants={itemAnimation} className="text-center">
-            <motion.div
-              variants={imageAnimation}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <motion.img
-                src="https://images.unsplash.com/photo-1702661159134-2e8d4dcf0231"
-                alt="Colores"
-                className="rounded-lg mb-4 w-full h-48 object-cover"
-                whileHover={{
-                  filter: "brightness(1.2)",
-                  transition: { duration: 0.3 },
-                }}
-              />
-            </motion.div>
-            <h3 className="text-primary font-semibold mb-2">
-              ¿Qué colores elijo?
-            </h3>
-            <p className="text-white/80">
-              ¡Brillá con las luces de neón! ¡Usá colores vibrantes!
-            </p>
-          </motion.div>
-
-          <motion.div variants={itemAnimation} className="text-center">
-            <motion.div
-              variants={imageAnimation}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <a
-                href="https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=_FcDv80xRbe6cUwrTKkicA&pt=d4d8b7d14295978949e67509c9945419&pi=8LVc4j7pSWGVv"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <motion.img
-                  src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa"
-                  alt="Playlist Colaborativa"
-                  className="rounded-lg mb-4 w-full h-48 object-cover"
-                  whileHover={{
-                    filter: "brightness(1.2)",
-                    transition: { duration: 0.3 },
-                  }}
-                />
-              </a>
-            </motion.div>
-            <h3 className="text-primary font-semibold mb-2">
-              Playlist Colaborativa
-            </h3>
-            <p className="text-white/80">
-              ¡Agregá tus canciones favoritas a mi playlist para que suenen en la
-              fiesta!
-            </p>
-          </motion.div>
+          ))}
         </motion.div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
