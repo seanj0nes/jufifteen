@@ -47,13 +47,15 @@ export function HeroSection() {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.5, delay: 0.5 }}
-        className="absolute left-0 bottom-0 w-96 h-screen"
+        className="absolute left-0 bottom-0 h-screen"
+        style={{ width: '25%' }}
       >
         <div 
           className="h-full w-full bg-contain bg-bottom bg-no-repeat"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1625204614387-6509254d5b02")',
-            filter: 'brightness(0) invert(1) opacity(0.7)',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?q=80")',
+            filter: 'brightness(0) invert(1) opacity(0.5)',
+            mixBlendMode: 'overlay'
           }}
         />
       </motion.div>
