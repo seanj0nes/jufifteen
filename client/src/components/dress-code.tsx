@@ -48,7 +48,7 @@ export function DressCode() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <CardTitle className="text-center text-white">Dress Code</CardTitle>
+          <CardTitle className="text-center text-white">Código de Vestimenta</CardTitle>
         </motion.div>
       </CardHeader>
       <CardContent>
@@ -70,7 +70,7 @@ export function DressCode() {
               <motion.img
                 src="https://images.unsplash.com/photo-1569388330292-79cc1ec67270"
                 alt="Vestimenta Formal"
-                className="rounded-lg mb-4 w-full"
+                className="rounded-lg mb-4 w-full h-48 object-cover"
                 whileHover={{
                   filter: "brightness(1.2)",
                   transition: { duration: 0.3 },
@@ -81,7 +81,7 @@ export function DressCode() {
               Vestimenta de Gala
             </h3>
             <p className="text-white/80">
-              Cae de traje o vestido bien L-gante y llamativo.
+              Caé de traje o vestido bien elegante y llamativo.
             </p>
           </motion.div>
 
@@ -96,7 +96,7 @@ export function DressCode() {
               <motion.img
                 src="https://images.unsplash.com/photo-1702661159134-2e8d4dcf0231"
                 alt="Colores"
-                className="rounded-lg mb-4 w-full"
+                className="rounded-lg mb-4 w-full h-48 object-cover"
                 whileHover={{
                   filter: "brightness(1.2)",
                   transition: { duration: 0.3 },
@@ -104,10 +104,10 @@ export function DressCode() {
               />
             </motion.div>
             <h3 className="text-primary font-semibold mb-2">
-              Que colores elijo?
+              ¿Qué colores elijo?
             </h3>
             <p className="text-white/80">
-              Brillá con las luces de neon! Trae muchos colores!
+              ¡Brillá con las luces de neón! ¡Usá colores vibrantes!
             </p>
           </motion.div>
 
@@ -127,7 +127,7 @@ export function DressCode() {
                 <motion.img
                   src="https://images.unsplash.com/photo-1494232410401-ad00d5433cfa"
                   alt="Playlist Colaborativa"
-                  className="rounded-lg mb-4 w-full"
+                  className="rounded-lg mb-4 w-full h-48 object-cover"
                   whileHover={{
                     filter: "brightness(1.2)",
                     transition: { duration: 0.3 },
@@ -139,7 +139,7 @@ export function DressCode() {
               Playlist Colaborativa
             </h3>
             <p className="text-white/80">
-              ¡Agrega tus canciones favoritas a mi playlist para que suene en la
+              ¡Agregá tus canciones favoritas a mi playlist para que suenen en la
               fiesta!
             </p>
           </motion.div>
