@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Calendar, Camera, Star } from "lucide-react";
+import { Calendar, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function HeroSection() {
@@ -173,37 +173,15 @@ export function HeroSection() {
             href={googleCalendarLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 border-2 border-[#ffd8aa] bg-black/70 hover:bg-black/90 text-[#ffd8aa] px-6 py-3 rounded-md transition-all duration-300 shadow-xl"
+            className="flex items-center gap-2 text-white hover:text-[#ffd8aa] transition-all duration-300"
             style={{
               letterSpacing: '0.05em',
               textShadow: '0px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
-            <Calendar className="w-4 h-4 drop-shadow-lg" />
+            <Calendar className="w-5 h-5 drop-shadow-lg" />
             <span className="font-semibold">Agendar</span>
           </a>
-        </motion.div>
-        
-        {/* Ícono de cámara animada */}
-        <motion.div 
-          className="absolute bottom-12 right-12 hidden md:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.5, duration: 1 }}
-        >
-          <motion.div
-            animate={{ 
-              scale: [1, 1.1, 1],
-              rotate: [0, 5, 0]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          >
-            <Camera className="w-12 h-12 text-[#ffd8aa] opacity-70" />
-          </motion.div>
         </motion.div>
       </motion.div>
     </div>

@@ -3,19 +3,11 @@ import { Howl } from "howler";
 let backgroundMusic: Howl | null = null;
 
 // Lista de pistas de audio con temática de desfile de moda
-// Usando música royalty-free segura para reproducción
+// Usando la pista proporcionada por el cliente
 const runwayTracks = [
   {
-    url: "/audio/fashion-show.mp3", // URL local que crearemos
-    title: "Runway Beats"
-  },
-  {
-    url: "/audio/fashion-electro.mp3", // URL local que crearemos
-    title: "Fashion Electro"
-  },
-  {
-    url: "/audio/fashion-pop.mp3", // URL local que crearemos  
-    title: "Fashion Pop"
+    url: "/audio/fashion-show.mp3", // Archivo proporcionado por el cliente
+    title: "Fashion Gaga"
   }
 ];
 
@@ -117,7 +109,7 @@ export function setupBackgroundAudio() {
       autoplay: false,
       html5: true,
       preload: true,
-      format: ['mp3'],
+      format: ['mp3', 'mp4'], // Soporte para MP4 también
       xhr: {
         method: 'GET',
         headers: {
