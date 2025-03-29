@@ -50,7 +50,7 @@ const dressCodeItems = [
   {
     icon: <Sparkles className="w-10 h-10 text-[#b98f71] mb-3" />,
     title: "Colores Sugeridos",
-    description: "Tonos de rosa, fucsia y colores pastel para complementar la temática de la celebración.",
+    description: "Tonos de rosa, fucsia y colores billantes para quedar a tono :P",
     image: "/images/dress-code/colors-new.svg"
   },
   {
