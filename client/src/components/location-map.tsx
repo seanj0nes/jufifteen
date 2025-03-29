@@ -5,7 +5,9 @@ export function LocationMap() {
   return (
     <Card className="bg-black/50 border-primary/20">
       <CardHeader>
-        <CardTitle className="text-center text-white">Ubicación</CardTitle>
+        <CardTitle className="text-center text-white">
+          Si venís por tu cuenta, tenes que llegar hasta acá
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="aspect-video relative">
@@ -24,7 +26,9 @@ export function LocationMap() {
             <MapPin className="w-4 h-4" />
             Salón Vonharv
           </p>
-          <p className="mt-2">Av. 19 entre 511 y 514, B1900 Gonnet, Provincia de Buenos Aires</p>
+          <p className="mt-2">
+            Av. 19 entre 511 y 514, B1900 Gonnet, Provincia de Buenos Aires
+          </p>
         </div>
       </CardContent>
     </Card>

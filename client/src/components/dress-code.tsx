@@ -48,9 +48,7 @@ export function DressCode() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <CardTitle className="text-center text-white">
-            Código de Vestimenta
-          </CardTitle>
+          <CardTitle className="text-center text-white">Dress Code</CardTitle>
         </motion.div>
       </CardHeader>
       <CardContent>
@@ -96,8 +94,8 @@ export function DressCode() {
               }}
             >
               <motion.img
-                src="https://images.unsplash.com/photo-1559563458-527698bf5295"
-                alt="Paleta de Colores"
+                src="https://images.unsplash.com/photo-1702661159134-2e8d4dcf0231"
+                alt="Colores"
                 className="rounded-lg mb-4 w-full"
                 whileHover={{
                   filter: "brightness(1.2)",
@@ -106,9 +104,11 @@ export function DressCode() {
               />
             </motion.div>
             <h3 className="text-primary font-semibold mb-2">
-              Paleta de Colores
+              Que colores elijo?
             </h3>
-            <p className="text-white/80">Brilla con las luces de neon</p>
+            <p className="text-white/80">
+              Brillá con las luces de neon! Trae muchos colores!
+            </p>
           </motion.div>
 
           <motion.div variants={itemAnimation} className="text-center">
@@ -139,7 +139,8 @@ export function DressCode() {
               Playlist Colaborativa
             </h3>
             <p className="text-white/80">
-              ¡Agrega tus canciones favoritas a la playlist de la fiesta!
+              ¡Agrega tus canciones favoritas a mi playlist para que suene en la
+              fiesta!
             </p>
           </motion.div>
         </motion.div>
