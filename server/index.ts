@@ -1,73 +1,22 @@
-import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+import express from "express";
+import { createServer } from "http";
+import { setupVite, log } from "./vite";
 
-// Verificar credenciales de Google Sheets
-const requiredEnvVars = [
-  'GOOGLE_SHEETS_ID',
-  'GOOGLE_SHEETS_CLIENT_EMAIL',
-  'GOOGLE_SHEETS_PRIVATE_KEY'
-];
-
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    throw new Error(`Missing required environment variable: ${envVar}`);
-  }
-}
-
+// Crear aplicación Express
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+const port = process.env.PORT || 5000;
 
-app.use((req, res, next) => {
-  const start = Date.now();
-  const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+// Crear servidor HTTP
+const server = createServer(app);
 
-  const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
-    capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
-  };
-
-  res.on("finish", () => {
-    const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
-      }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
-      log(logLine);
-    }
+// Configurar Vite para desarrollo
+setupVite(app, server)
+  .then(() => {
+    // Iniciar servidor
+    server.listen(port, () => {
+      log(`Servidor corriendo en el puerto ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Error al iniciar el servidor:", error);
   });
-
-  next();
-});
-
-(async () => {
-  const server = registerRoutes(app);
-
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-
-    res.status(status).json({ message });
-    throw err;
-  });
-
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
-
-  const PORT = 5000;
-  server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT}`);
-  });
-})();
