@@ -6,7 +6,7 @@ let backgroundMusic: Howl | null = null;
 // Usando la pista proporcionada por el cliente
 const runwayTracks = [
   {
-    url: "/audio/fashion-show.mp3", // Archivo proporcionado por el cliente
+    url: "/audio/fashion gaga.mp4", // Archivo actualizado proporcionado por el cliente
     title: "Fashion Gaga"
   }
 ];
