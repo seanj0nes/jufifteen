@@ -151,11 +151,7 @@ export function GiftRegistry() {
                 <div className="bg-black/30 p-4 rounded-lg text-left mb-6">
                   <p className="mb-2 text-white/90">
                     <strong className="text-[#ffd8aa]">Alias CVU:</strong>{" "}
-                    <span className="font-mono">regalo.cumple.mp</span>
-                  </p>
-                  <p className="text-white/90">
-                    <strong className="text-[#ffd8aa]">Nombre:</strong>
-                    <span className="font-mono"> Julieta Molina</span>
+                    <span className="font-mono">Belenjulietamolina</span>
                   </p>
                 </div>
               </div>
@@ -173,7 +169,7 @@ export function GiftRegistry() {
                       className="w-full relative overflow-hidden group border-[#ffd8aa] bg-black/50 hover:bg-black/70 text-[#ffd8aa]"
                       onClick={() =>
                         window.open(
-                          "mercadopago://sendmoney?receiver_alias=regalo.cumple.mp&amount=50000",
+                          "mercadopago://sendmoney?receiver_alias=Belenjulietamolina&amount=50000",
                           "_blank",
                         )
                       }
