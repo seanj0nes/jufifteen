@@ -116,8 +116,8 @@ export function RsvpForm() {
                 </div>
                 <FormControl>
                   <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
+                    checked={field.value === true}
+                    onCheckedChange={(checked) => field.onChange(!!checked)}
                   />
                 </FormControl>
                 <FormMessage />
@@ -125,74 +125,81 @@ export function RsvpForm() {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="dietaryRestrictions"
-            render={({ field: { value, onChange, ...field } }) => (
-              <FormItem>
-                <FormLabel>Avisanos qué preferís comer</FormLabel>
-                <FormControl>
-                  <select
-                    className="w-full rounded-md border border-input bg-background px-3 py-2"
-                    value={value || ""}
-                    onChange={onChange}
-                    {...field}
-                  >
-                    <option value="Lo que venga">Lo que venga</option>
-                    <option value="Soy Veggie">Soy Veggie</option>
-                    <option value="Cuidado con el pan que soy Celiaco">
-                      Cuidado con el pan que soy Celiaco
-                    </option>
-                  </select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {form.watch("attending") === true && (
+            <>
+              <FormField
+                control={form.control}
+                name="dietaryRestrictions"
+                render={({ field: { value, onChange, ...field } }) => (
+                  <FormItem>
+                    <FormLabel>Avisanos qué preferís comer</FormLabel>
+                    <FormControl>
+                      <select
+                        className="w-full rounded-md border border-input bg-background px-3 py-2"
+                        value={value || ""}
+                        onChange={onChange}
+                        {...field}
+                      >
+                        <option value="Lo que venga">Lo que venga</option>
+                        <option value="Soy Veggie">Soy Veggie</option>
+                        <option value="Cuidado con el pan que soy Celiaco">
+                          Cuidado con el pan que soy Celiaco
+                        </option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-          <FormField
-            control={form.control}
-            name="usesBus"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-                <div className="space-y-0.5">
-                  <FormLabel className="text-base">
-                    ¿Queres venir en micro?
-                  </FormLabel>
-                </div>
-                <FormControl>
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
+              <FormField
+                control={form.control}
+                name="usesBus"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                      <FormLabel className="text-base">
+                        ¿Queres venir en micro?
+                      </FormLabel>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value === true}
+                        onCheckedChange={(checked) => field.onChange(!!checked)}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
 
-          {form.watch("usesBus") && (
-            <FormField
-              control={form.control}
-              name="dni"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Si venís en micro, necesito tu DNI</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Ej: 12345678"
-                      {...field}
-                      onChange={(e) => {
-                        const value = e.target.value
-                          .replace(/\D/g, "")
-                          .slice(0, 8);
-                        field.onChange(value);
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+              {form.watch("usesBus") === true && (
+                <FormField
+                  control={form.control}
+                  name="dni"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Si venís en micro, necesito tu DNI</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Ej: 12345678"
+                          value={field.value || ""}
+                          onChange={(e) => {
+                            const value = e.target.value
+                              .replace(/\D/g, "")
+                              .slice(0, 8);
+                            field.onChange(value);
+                          }}
+                          onBlur={field.onBlur}
+                          name={field.name}
+                          ref={field.ref}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               )}
-            />
+            </>
           )}
 
           <FormField

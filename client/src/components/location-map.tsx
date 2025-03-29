@@ -26,7 +26,7 @@ export function LocationMap() {
           className="aspect-video relative"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3272.8289276661974!2d-58.0072877237305!3d-34.89817897272648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62f5f3f6f41%3A0x7f3c28012a2b8e0a!2sAv.%2019%20%26%20Calle%20511%2C%20Manuel%20B%20Gonnet%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1707158548861!5m2!1ses!2sar"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.0368753028854!2d-58.00387572372847!3d-34.89572517284094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e7cc046e9479%3A0x212885f191e1227b!2sSal%C3%B3n%20Vonharv!5e0!3m2!1ses!2sar!4v1711742196387!5m2!1ses!2sar"
             width="100%"
             height="100%"
             style={{ border: 0 }}
