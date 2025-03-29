@@ -54,61 +54,18 @@ export function HeroSection() {
         className="relative z-10 h-full flex flex-col items-center justify-center text-center"
         style={{ opacity }}
       >
-        {/* Julieta script */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 50 }}
+        {/* Logo Julieta (usando la imagen PNG) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="text-5xl sm:text-6xl md:text-8xl font-light text-[#a67b60] mb-4 md:mb-6 px-4"
-          style={{ 
-            fontFamily: '"JuliScript", "Dancing Script", cursive',
-            textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
-          }}
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md px-4"
         >
-          Juli
-        </motion.h1>
-
-        {/* Date in outlined style */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-xl sm:text-2xl md:text-3xl tracking-widest px-4 text-[#a67b60]"
-          style={{ 
-            fontFamily: '"Cormorant Garamond", serif',
-            fontWeight: 300
-          }}
-        >
-          26/4/2025
-        </motion.div>
-
-        {/* VONHARV text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="mt-3 tracking-widest text-lg sm:text-xl md:text-2xl text-[#a67b60]"
-          style={{ 
-            fontFamily: '"Cormorant Garamond", serif', 
-            letterSpacing: '0.2em', 
-            fontWeight: 400 
-          }}
-        >
-          VONHARV
-        </motion.div>
-        
-        {/* La Plata text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.8 }}
-          className="text-sm sm:text-base text-[#a67b60]/90 mt-1"
-          style={{ 
-            fontFamily: '"Cormorant Garamond", serif',
-            letterSpacing: '0.1em'
-          }}
-        >
-          La Plata
+          <img 
+            src="/images/juli-logo.png" 
+            alt="Julieta - Mis 15" 
+            className="w-full h-auto"
+          />
         </motion.div>
         
         {/* Add to calendar button */}
@@ -129,7 +86,7 @@ export function HeroSection() {
             }}
           >
             <Calendar className="w-4 h-4" />
-            <span>Agregar a Calendario</span>
+            <span>Agendar</span>
           </a>
         </motion.div>
       </motion.div>
