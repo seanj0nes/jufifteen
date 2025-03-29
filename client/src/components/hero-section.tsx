@@ -14,15 +14,17 @@ export function HeroSection() {
 
   return (
     <div className="relative h-screen overflow-hidden">
-      {/* Background image */}
+      {/* Background image - Imagen actual de Julieta */}
       <motion.div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1621784563330-caee0b138a00")',
-          filter: 'brightness(0.4)',
+          backgroundImage: 'url("/images/ju_bg.png")',
           scale,
         }}
       />
+      
+      {/* Overlay oscuro para mejorar legibilidad */}
+      <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Camera flash effects */}
       <div className="absolute inset-0">
@@ -54,7 +56,7 @@ export function HeroSection() {
         className="relative z-10 h-full flex flex-col items-center justify-center text-center"
         style={{ opacity }}
       >
-        {/* Logo Julieta (usando la imagen PNG) */}
+        {/* Logo Julieta (usando la imagen transparente) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,7 +64,7 @@ export function HeroSection() {
           className="w-full max-w-xs sm:max-w-sm md:max-w-md px-4"
         >
           <img 
-            src="/images/juli-logo.png" 
+            src="/images/datita_tr.png" 
             alt="Julieta - Mis 15" 
             className="w-full h-auto"
           />

@@ -4,6 +4,7 @@ import { LocationMap } from "@/components/location-map";
 import { DressCode } from "@/components/dress-code";
 import { GiftRegistry } from "@/components/gift-registry";
 import { Countdown } from "@/components/countdown";
+import { PhotoGallery } from "@/components/photo-gallery";
 import { useEffect } from "react";
 import { setupBackgroundAudio } from "@/lib/audio";
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Countdown date="2025-04-26T21:30:00" />
         <RsvpForm />
         <LocationMap />
+        <PhotoGallery />
         <DressCode />
         <GiftRegistry />
       </div>
