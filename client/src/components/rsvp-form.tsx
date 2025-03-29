@@ -225,7 +225,11 @@ export function RsvpForm() {
             className="w-full"
             disabled={mutation.isPending}
           >
-            {mutation.isPending ? "Enviando..." : "Confirmo Asistencia"}
+            {mutation.isPending 
+              ? "Enviando..." 
+              : form.watch("attending") === true 
+                ? "Confirmo Asistencia" 
+                : "Perdón! Pero me pierdo la fiesta"}
           </Button>
         </form>
       </Form>
