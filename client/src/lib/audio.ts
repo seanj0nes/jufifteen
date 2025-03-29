@@ -26,16 +26,16 @@ export function setupBackgroundAudio() {
   function createAudioControls(trackTitle: string) {
     // Crear contenedor para botón y etiqueta
     const container = document.createElement("div");
-    container.className = "fixed bottom-4 right-4 flex items-center gap-2 z-50";
+    container.className = "fixed bottom-6 right-6 flex items-center gap-3 z-50 filter drop-shadow-2xl";
     
     // Crear botón de reproducción
     const playButton = document.createElement("button");
-    playButton.innerHTML = "🎵";
-    playButton.className = "bg-primary/80 hover:bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110";
+    playButton.innerHTML = "♪";
+    playButton.className = "bg-black/80 hover:bg-black/90 text-[#ffd8aa] border border-[#ffd8aa]/30 rounded-full w-14 h-14 flex items-center justify-center shadow-lg transition-all duration-300 transform hover:scale-110 text-xl font-medium";
     
     // Etiqueta para mostrar la pista actual
     const trackLabel = document.createElement("div");
-    trackLabel.className = "bg-black/50 text-white px-3 py-1 rounded-full text-sm opacity-0 transition-opacity duration-300";
+    trackLabel.className = "bg-black/70 text-[#ffd8aa] px-4 py-2 rounded-full text-sm opacity-0 transition-opacity duration-300 border border-[#ffd8aa]/20 text-shadow shadow-black";
     trackLabel.textContent = trackTitle;
     
     // Tooltip
@@ -77,7 +77,7 @@ export function setupBackgroundAudio() {
         setTimeout(() => howl.pause(), 800);
         
         if (ui.playButton) {
-          ui.playButton.innerHTML = "🎵";
+          ui.playButton.innerHTML = "♪";
           ui.playButton.classList.remove("animate-pulse");
         }
       } else {
@@ -85,7 +85,7 @@ export function setupBackgroundAudio() {
         howl.fade(0, 0.3, 1500);
         
         if (ui.playButton) {
-          ui.playButton.innerHTML = "⏸";
+          ui.playButton.innerHTML = "II";
           ui.playButton.classList.add("animate-pulse");
         }
       }
@@ -136,14 +136,15 @@ export function setupBackgroundAudio() {
       
       // Crear un mensaje amigable para el botón
       if (ui.playButton) {
-        ui.playButton.innerHTML = "🔇";
+        ui.playButton.innerHTML = "✕";
         ui.playButton.title = "Audio no disponible";
         ui.playButton.classList.add("opacity-50");
         ui.playButton.disabled = true;
       }
       
       if (ui.trackLabel) {
-        ui.trackLabel.textContent = "Audio no disponible";
+        ui.trackLabel.textContent = "Música no disponible";
+        ui.trackLabel.style.opacity = "1";
       }
       
       // No intentar más pistas para evitar bucles de error
