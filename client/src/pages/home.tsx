@@ -4,7 +4,6 @@ import { LocationMap } from "@/components/location-map";
 import { DressCode } from "@/components/dress-code";
 import { GiftRegistry } from "@/components/gift-registry";
 import { Countdown } from "@/components/countdown";
-import { FashionTrivia } from "@/components/fashion-trivia";
 import { useEffect } from "react";
 import { setupBackgroundAudio } from "@/lib/audio";
 
@@ -22,7 +21,6 @@ export default function Home() {
         <RsvpForm />
         <LocationMap />
         <DressCode />
-        <FashionTrivia />
         <GiftRegistry />
       </div>
     </div>
