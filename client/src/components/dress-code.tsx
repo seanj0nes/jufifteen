@@ -60,7 +60,7 @@ const dressCodeItems = [
     title: "Playlist Colaborativa",
     description:
       "¡Sumá tus canciones favoritas a mi playlist para que suenen en la fiesta!",
-    image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3",
+    image: "/images/dress-code/earphones.jpeg",
     link: "https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=5zgc_NtZR6mSnxw8iFSoTQ&pi=ynNSKilXSj6UK&pt=e217ecca928fb04720c6a7529d4483d7",
   },
 ];
@@ -101,9 +101,7 @@ export function DressCode() {
                 <CardContent className="p-6 flex flex-col items-center h-full">
                   <motion.div
                     variants={imageAnimation}
-                    className={`relative w-full mb-6 overflow-hidden rounded-lg ${
-                      item.image.includes('formal-new') ? 'h-56' : 'h-48'
-                    }`}
+                    className="relative w-full h-52 mb-6 overflow-hidden rounded-lg"
                   >
                     {item.link ? (
                       <a
@@ -121,7 +119,7 @@ export function DressCode() {
                           alt={item.title}
                           className={`w-full h-full transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110 ${
                             item.image.includes('formal-new') 
-                              ? 'object-contain bg-gradient-to-br from-black/80 to-black/60 p-1' 
+                              ? 'object-contain bg-gradient-to-br from-[#181818] to-[#0c0c0c] p-1' 
                               : 'object-cover'
                           }`}
                         />
@@ -134,7 +132,7 @@ export function DressCode() {
                           alt={item.title}
                           className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${
                             item.image.includes('formal-new') 
-                              ? 'object-contain bg-gradient-to-br from-black/80 to-black/60 p-1' 
+                              ? 'object-contain bg-gradient-to-br from-[#181818] to-[#0c0c0c] p-1' 
                               : 'object-cover'
                           }`}
                         />
