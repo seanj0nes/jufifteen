@@ -117,11 +117,7 @@ export function DressCode() {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className={`w-full h-full transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110 ${
-                            item.image.includes('formal-new') 
-                              ? 'object-contain object-top pt-6' 
-                              : 'object-cover'
-                          }`}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110"
                         />
                       </a>
                     ) : (
@@ -130,11 +126,7 @@ export function DressCode() {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${
-                            item.image.includes('formal-new') 
-                              ? 'object-contain object-top pt-6' 
-                              : 'object-cover'
-                          }`}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                       </>
                     )}
