@@ -28,7 +28,7 @@ const itemAnimation = {
 };
 
 const imageAnimation = {
-  hidden: { scale: 0.8, opacity: 0 },
+  hidden: { scale: 0.7, opacity: 0 },
   show: {
     scale: 1,
     opacity: 1,
@@ -44,22 +44,25 @@ const dressCodeItems = [
   {
     icon: <Scissors className="w-10 h-10 text-[#b98f71] mb-3" />,
     title: "Dress Code: Elegante",
-    description: "Traje, vestido o conjunto que te haga brillar. ¡Es noche de pasarela!",
-    image: "/images/dress-code/formal-new.png"
+    description:
+      "Traje, vestido o conjunto que te haga brillar. ¡Es noche de pasarela!",
+    image: "/images/dress-code/formal-new.png",
   },
   {
     icon: <Sparkles className="w-10 h-10 text-[#b98f71] mb-3" />,
     title: "Colores Sugeridos",
-    description: "Tonos de rosa, fucsia y colores billantes para quedar a tono :P",
-    image: "/images/dress-code/colors-new.svg"
+    description:
+      "Tonos de rosa, fucsia y colores billantes para quedar a tono :P",
+    image: "/images/dress-code/colors-new.svg",
   },
   {
     icon: <Music className="w-10 h-10 text-[#b98f71] mb-3" />,
     title: "Playlist Colaborativa",
-    description: "¡Sumá tus canciones favoritas a mi playlist para que suenen en la fiesta!",
+    description:
+      "¡Sumá tus canciones favoritas a mi playlist para que suenen en la fiesta!",
     image: "https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3",
-    link: "https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=5zgc_NtZR6mSnxw8iFSoTQ&pi=ynNSKilXSj6UK&pt=e217ecca928fb04720c6a7529d4483d7"
-  }
+    link: "https://open.spotify.com/playlist/5CFX3UkqlvObM40Izck5Uf?si=5zgc_NtZR6mSnxw8iFSoTQ&pi=ynNSKilXSj6UK&pt=e217ecca928fb04720c6a7529d4483d7",
+  },
 ];
 
 export function DressCode() {
@@ -72,11 +75,14 @@ export function DressCode() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <h2 className="text-3xl md:text-4xl text-center font-['Cormorant_Garamond'] font-light text-[#b98f71] mb-12" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+          <h2
+            className="text-3xl md:text-4xl text-center font-['Cormorant_Garamond'] font-light text-[#b98f71] mb-12"
+            style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+          >
             Código de Vestimenta
           </h2>
         </motion.div>
-        
+
         <motion.div
           variants={containerAnimation}
           initial="hidden"
@@ -85,9 +91,9 @@ export function DressCode() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {dressCodeItems.map((item, index) => (
-            <motion.div 
-              key={index} 
-              variants={itemAnimation} 
+            <motion.div
+              key={index}
+              variants={itemAnimation}
               className="text-center"
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
             >
@@ -95,7 +101,9 @@ export function DressCode() {
                 <CardContent className="p-6 flex flex-col items-center h-full">
                   <motion.div
                     variants={imageAnimation}
-                    className="relative w-full h-48 mb-6 overflow-hidden rounded-lg"
+                    className={`relative w-full mb-6 overflow-hidden rounded-lg ${
+                      item.image.includes('formal-new') ? 'h-56' : 'h-48'
+                    }`}
                   >
                     {item.link ? (
                       <a
@@ -111,7 +119,11 @@ export function DressCode() {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110"
+                          className={`w-full h-full transition-transform duration-500 hover:scale-110 hover:filter hover:brightness-110 ${
+                            item.image.includes('formal-new') 
+                              ? 'object-contain bg-gradient-to-br from-black/80 to-black/60 p-1' 
+                              : 'object-cover'
+                          }`}
                         />
                       </a>
                     ) : (
@@ -120,24 +132,29 @@ export function DressCode() {
                         <img
                           src={item.image}
                           alt={item.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${
+                            item.image.includes('formal-new') 
+                              ? 'object-contain bg-gradient-to-br from-black/80 to-black/60 p-1' 
+                              : 'object-cover'
+                          }`}
                         />
                       </>
                     )}
                   </motion.div>
-                  
+
                   <div className="flex-grow">
                     {item.icon}
-                    <h3 className="text-[#b98f71] font-['Cormorant_Garamond'] font-semibold text-xl mb-3" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}>
+                    <h3
+                      className="text-[#b98f71] font-['Cormorant_Garamond'] font-semibold text-xl mb-3"
+                      style={{ textShadow: "0 1px 2px rgba(0,0,0,0.5)" }}
+                    >
                       {item.title}
                     </h3>
-                    <p className="text-white/80">
-                      {item.description}
-                    </p>
+                    <p className="text-white/80">{item.description}</p>
                   </div>
-                  
+
                   {/* Flash de cámara efecto */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-white/5 opacity-0"
                     whileHover={{ opacity: 1, transition: { duration: 0.2 } }}
                   />
